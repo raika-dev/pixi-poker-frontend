@@ -9,7 +9,7 @@ const BAR_WIDTH_PERCENTAGE = 0.8;
 
 const LoaderBarFill = (props) => {
   const { size: stageSize } = props;
-  const { loadingPercentage, setLoadingPercentage } = useState(0);
+  const [loadingPercentage, setLoadingPercentage] = useState(0);
   const dispatch = useDispatch();
 
   const draw = useCallback(
@@ -31,10 +31,10 @@ const LoaderBarFill = (props) => {
     async function loadAssets() {
       Assets.init({ manifest: manifest });
       const bundleIds = manifest.bundles.map((bundle) => bundle.name);
-      await Assets.loadBundle(bundleIds, (progress) => {
-        setLoadingPercentage(progress);
-      });
-      // dispatch(finishLoading());
+      await Assets.loadBundle(bundleIds, (progress) =>
+        setLoadingPercentage(progress)
+      );
+      dispatch(finishLoading());
     }
     loadAssets();
   }, []);
