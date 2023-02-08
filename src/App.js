@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { Stage } from "@pixi/react";
-
 import LoadingScene from "./scenes/LoadingScene";
 import GameScene from "./scenes/GameScene";
-import "./App.css";
-import { Provider } from "react-redux";
-import store from "./store";
 
-const getSize = () => ({
-  width: window.innerWidth,
-  height: window.innerHeight,
-});
+import { getSize } from "./helpers/utils";
+
+import { CustomStage } from "./CustomStage";
 
 const App = () => {
   const [size, setSize] = useState(getSize);
@@ -29,7 +23,7 @@ const App = () => {
   }, []);
 
   return (
-    <Stage
+    <CustomStage
       options={{
         resolution: window.devicePixelRatio || 1,
         autoDensity: true,
@@ -39,10 +33,8 @@ const App = () => {
       width={window.innerWidth}
       height={window.innerHeight}
     >
-      <Provider store={store}>
-        {isLoading ? <LoadingScene size={size} /> : <GameScene size={size} />}
-      </Provider>
-    </Stage>
+      {isLoading ? <LoadingScene size={size} /> : <GameScene size={size} />}
+    </CustomStage>
   );
 };
 

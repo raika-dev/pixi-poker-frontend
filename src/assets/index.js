@@ -3,7 +3,7 @@ export const manifest = {
     {
       name: "Main Poker Bundle",
       assets: {
-        "day-background": "./assets/images/Day background.png",
+        "day-background": "./images/day-background.png",
       },
     },
     // {
