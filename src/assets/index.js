@@ -5,6 +5,8 @@ export const manifest = {
       assets: {
         "day-background": "./images/day-background.png",
         "day-deck": "./images/day-deck.png",
+        "day-card": "./images/day-card.png",
+        "day-annotation": "./images/day-annotation.png",
       },
     },
     // {

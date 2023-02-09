@@ -17,6 +17,10 @@ const Background = PixiComponent("Background", {
     const ratioY = newStageSize.height / bgOriginHeight;
     instance.scale.x = ratioX;
     instance.scale.y = ratioY;
+    instance.position = {
+      x: instance.width / 2,
+      y: instance.height / 2,
+    };
     // instance.scale.x = instance.scale.y = Math.max(ratioX, ratioY);
   },
 });
